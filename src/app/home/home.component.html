@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="container mt-4 mb-10">
+  
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="input-group">
+        <input type="text" class="form-control flex-grow-1" placeholder="Pesquisar..." aria-label="Pesquisar" aria-describedby="button-addon2" [(ngModel)]="pesquisa"> 
+        <button class="btn btn-outline-secondary" style="margin-right: 10px;" type="button" id="button-addon2" (click)="procurarDog(pesquisa)" (click)="resetPaginacao()" >Buscar</button>
+      </div>
+    </div>
+    <!--<div class="col-md-6">
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let l of letras"><a class="dropdown-item" href="#">{{l}}</a></li>
+      </ul>
+    </div>-->
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="display: inline-flex;">
+      <button (click)="procurarDogLetra(l)" class="btn btn-outline-secondary" style="margin-right: 10px;" *ngFor="let l of letras"><a class="dropdown-item" href="#">{{l}}</a></button>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf=" msg != '' ">
+    <h3>{{msg}}</h3>
+  </div>
+  <div class="row mt-4">
+    <h4 *ngIf="!desativarbotoes">Página: {{pagina}}</h4>
+    <h4 *ngIf="desativarbotoes && msg == ''">Página da Pesquisa <span *ngIf="letraa != ''">#{{letraa}}</span> <span *ngIf="pesquisa != '' && letraa == ''">#{{pesquisa}}</span> : {{pagSearch}}</h4>
+  </div>
+  <div class="row d-flex justify-content-center mt-1">
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-3" *ngFor="let dog of ArrayDog">
+      <div class="card custom-card">
+        <img [src]="dog.image.url" [alt]="dog.name" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;">
+        <div class="card-body">
+          <div class="row">
+            <h5 class="card-title espaco">{{ dog.name }} <i *ngIf="!estaFavoritado(dog.id)" (click)="favoritar(dog.id)" class="fa-solid fa-heart"></i><i *ngIf="estaFavoritado(dog.id)" (click)="favoritar(dog.id)" class="fa-solid fa-heart liked"></i></h5>
+          </div>
+          <div class="row">
+            <p class="card-text"><a [routerLink]="['/dog', dog.id]">Ver mais..</a></p>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <nav aria-label="Page navigation example" class="fixed-bottom p-3">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><button class="page-link" href="#" (click)="rmvPag()" [disabled]="pagina === 1" *ngIf="!desativarbotoes"><</button></li>
+        <li class="page-item"><button class="page-link" href="#" (click)="addPag()" [disabled]="pagina === 20" *ngIf="!desativarbotoes">></button></li>
+        <li class="page-item"><button class="page-link" href="#" (click)="rmvPagSearch()" [disabled]="pagina === 1" *ngIf="desativarbotoes"><</button></li>
+        <li class="page-item"><button class="page-link" href="#" (click)="addPagSearch()" *ngIf="desativarbotoes">></button></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+

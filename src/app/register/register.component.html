@@ -1,0 +1,25 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+<form (ngSubmit)="register()" class="card p-3" style="width: 300px;" #registerForm="ngForm">
+    <div class="div text-center">
+        <img src="../../assets/dog.png" width="100px" height="100px" alt="">
+    </div>
+    <h5 class="card-title mb-3 text-center">Criar conta</h5>
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="user.username" required #usernameModel="ngModel">
+        <p *ngIf="!usernameModel.valid && usernameModel.touched" class="text-danger">Campo obrigatório.</p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required minlength="8"
+            #passwordModel="ngModel">
+        <p *ngIf="passwordModel.errors?.['minlength'] && passwordModel.touched" class="text-danger">
+            Tem que ter pelo menos 8 caracteres!
+        </p>
+    </div>
+    <div class="mb-3">
+        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary botaologin">Registar</button>
+        <button type="button" (click)="onCancel()" class="btn btn-secondary ml-2">Voltar</button>
+    </div>
+</form>
+</div>

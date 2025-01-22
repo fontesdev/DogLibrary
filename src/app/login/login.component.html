@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <form (ngSubmit)="login()" class="card p-3" style="width: 300px;" #loginForm="ngForm">
+    <div class="div text-center">
+      <img src="../../assets/dog.png" width="100px" height="100px" alt="">
+    </div>
+    <h5 class="card-title mb-3 text-center">Login</h5>
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" [(ngModel)]="username" required #usernameModel="ngModel">
+      <p *ngIf="!usernameModel.valid && usernameModel.touched" class="text-danger">Campo obrigatório.</p>
+    </div>
+    <div class="position-relative">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
+      <span class="position-absolute" id="togglePassword" style="top: 38px; right: 10px; cursor: pointer;">
+      </span>
+    </div>
+    <div class="row mt-1 mb-3" style="text-align: right;">
+      <span style="font-size: 10px;">Não tem conta? Clique <a [routerLink]="['/register']">aqui</a> para criar uma!</span>
+    </div>
+    <div class="mb-3">
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary botaologin">Login</button>
+      <button type="button" (click)="loginForm.reset()" class="btn btn-secondary ml-2">Limpar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card p-3" style="width: 300px; border: none;">
+          <div class="card-body">
+            <h5 class="card-title">Trocar Senha</h5>
+                <form (ngSubmit)="changePassword()" #changePasswordForm="ngForm">
+                <div class="form-group mt-4">
+                    <label for="oldPassword">Senha Antiga</label>
+                    <input type="password" class="form-control" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="newPassword">Nova Senha</label>
+                    <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required>
+                </div>
+                <div class="div mt-4">
+                    <button type="submit" class="btn btn-primary">Trocar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

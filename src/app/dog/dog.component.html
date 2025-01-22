@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>{{ c.name }} - #{{ c.id }}</h1>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img [src]="c.image.url" [alt]="c.name" class="img-fluid rounded-lg shadow" style="height: 300px; object-fit: cover; object-position: center;">
+        </div>
+        <div class="col-md-6">
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Peso (Métrico):</strong></div>
+                <div class="col-sm-6">{{ c.weight.metric }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Peso (Imperial):</strong></div>
+                <div class="col-sm-6">{{ c.weight.imperial }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Altura (Métrica):</strong></div>
+                <div class="col-sm-6">{{ c.height.metric }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Altura (Imperial):</strong></div>
+                <div class="col-sm-6">{{ c.height.imperial }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Produz-se para:</strong></div>
+                <div class="col-sm-6">{{ c.bredFor }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Grupo da raça:</strong></div>
+                <div class="col-sm-6">{{ c.breedGroup }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Esperança de Vida:</strong></div>
+                <div class="col-sm-6">{{ c.lifeSpan }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Temperamento:</strong></div>
+                <div class="col-sm-6">{{ c.temperament }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6"><strong>Origem:</strong></div>
+                <div class="col-sm-6">{{ c.origin }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="row">
+                <h1>Relações</h1>
+            </div>
+            <div class="row">
+                <p>{{msg}}</p>
+                <div class="col-sm-2" *ngFor="let related of relatedDogs">
+                    <div class="card mb-3">
+                        <img [src]="related.image.url" class="card-img-top">
+                        <div class="card-body">
+                        <h6 class="card-title">{{ related.name }}</h6>
+                        <small><a [routerLink]="['/dog/', related.id]">Ver mais..</a></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center w-100 mt-4 mb-4">
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-primary" href="/home">Voltar</a>
+        </div>
+    </div>
+</div>

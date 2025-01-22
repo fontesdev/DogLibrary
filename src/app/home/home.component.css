@@ -1,0 +1,33 @@
+.mb-10{
+    margin-bottom: 50px !important;
+}
+
+button{
+    box-shadow: none !important;
+}
+
+button:hover,
+button:active{
+    transition: none;
+    box-shadow: none !important;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.espaco{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mr{
+    margin-right: 1.25px;
+}
+
+.liked {
+    color: red;
+}

@@ -1,0 +1,12 @@
+.mb-10{
+    margin-bottom: 50px !important;
+}
+
+.espaco{
+    display: flex;
+    justify-content: space-between;
+}
+
+.liked{
+    color: red;
+}
